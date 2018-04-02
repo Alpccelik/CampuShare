@@ -1,0 +1,39 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.campushare",
+      "nativeLanguage": "tr"
+    },
+    "jhipsterVersion": "4.14.1",
+    "baseName": "CampuShare",
+    "packageName": "com.campushare",
+    "packageFolder": "com/campushare",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSocialSignIn": false,
+    "enableSwaggerCodegen": true,
+    "jwtSecretKey": "fe7e5a4a5805988a948143148538f655134f82a1",
+    "clientFramework": "angularX",
+    "useSass": false,
+    "clientPackageManager": "yarn",
+    "applicationType": "monolith",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "tr",
+    "languages": [
+      "tr",
+      "en"
+    ]
+  }
+}
