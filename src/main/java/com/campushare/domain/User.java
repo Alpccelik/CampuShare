@@ -55,6 +55,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
     private String lastName;
 
     @Email
+    @Pattern(regexp = Constants.EMAIL_REGEX)
     @Size(min = 5, max = 100)
     @Column(length = 100, unique = true)
     private String email;
