@@ -1,0 +1,80 @@
+<div>
+    <h2>
+        <span jhiTranslate="campuShareApp.event.home.title">Events</span>
+        <button class="btn btn-primary float-right jh-create-entity create-event" [routerLink]="['/', { outlets: { popup: ['event-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="campuShareApp.event.home.createLabel">
+            Create new Event
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="events">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="category"><span jhiTranslate="campuShareApp.event.category">Category</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span jhiTranslate="campuShareApp.event.description">Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="maxPeople"><span jhiTranslate="campuShareApp.event.maxPeople">Max People</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="startDate"><span jhiTranslate="campuShareApp.event.startDate">Start Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="endDate"><span jhiTranslate="campuShareApp.event.endDate">End Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="adress"><span jhiTranslate="campuShareApp.event.adress">Adress</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="userLogin"><span jhiTranslate="campuShareApp.event.user">User</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let event of events ;trackBy: trackId">
+                <td><a [routerLink]="['../event', event.id ]">{{event.id}}</a></td>
+                <td>{{event.category}}</td>
+                <td>{{event.description}}</td>
+                <td>{{event.maxPeople}}</td>
+                <td>{{event.startDate | date:'mediumDate'}}</td>
+                <td>{{event.endDate | date:'mediumDate'}}</td>
+                <td>{{event.adress}}</td>
+                <td>
+                    {{event.userLogin}}
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../event', event.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'event/'+ event.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'event/'+ event.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="events && events.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>
