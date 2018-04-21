@@ -13,7 +13,7 @@ import java.util.Objects;
  * A Event.
  */
 @Entity
-@Table(name = "jhi_event")
+@Table(name = "event")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Event implements Serializable {
 
@@ -147,16 +147,16 @@ public class Event implements Serializable {
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Event event = (Event) o;
-        if (event.getId() == null || getId() == null) {
-            return false;
+            public boolean equals(Object o) {
+                if (this == o) {
+                    return true;
+                }
+                if (o == null || getClass() != o.getClass()) {
+                    return false;
+                }
+                Event event = (Event) o;
+                if (event.getId() == null || getId() == null) {
+                    return false;
         }
         return Objects.equals(getId(), event.getId());
     }
