@@ -17,11 +17,15 @@
                 "title": "Event"
             },
             "maxPeople": "Max People",
-            "description": "Description",
-            "startDate": "Start Date",
-            "endDate": "End Date",
-            "adress": "Adress",
-            "user": "User"
+            "description": "Etkinlik Açıklaması",
+            "startDate": "Başlangıç Tarihi",
+            "endDate": "Bitiş Tarihi",
+            "adress": "Etkinlik Adresi",
+            "category": "Kategori",
+            "user": "Kullanıcı",
+            "sport": "Spor",
+            "lesson": "Ders",
+            "social": "Sosyal Etkinlik"
         }
     }
 }

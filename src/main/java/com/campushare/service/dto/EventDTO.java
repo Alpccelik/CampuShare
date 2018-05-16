@@ -22,6 +22,7 @@ public class EventDTO implements Serializable {
         this.startDate = event.getStartDate();
         this.endDate = event.getEndDate();
         this.category= event.getCategory();
+        this.adress= event.getAdress();
     }
 
 

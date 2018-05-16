@@ -1,12 +1,13 @@
 package com.campushare.service;
 
 import com.campushare.domain.Event;
+import com.campushare.domain.User;
 import com.campushare.repository.EventRepository;
+import com.campushare.security.SpringSecurityAuditorAware;
 import com.campushare.service.dto.EventDTO;
 import com.campushare.service.mapper.EventMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -25,10 +26,13 @@ public class EventService {
     private final EventRepository eventRepository;
 
     private final EventMapper eventMapper;
+    private final UserService userService;
 
-    public EventService(EventRepository eventRepository, EventMapper eventMapper) {
+
+    public EventService(EventRepository eventRepository, EventMapper eventMapper, UserService userService) {
         this.eventRepository = eventRepository;
         this.eventMapper = eventMapper;
+        this.userService = userService;
     }
 
     /**
@@ -40,6 +44,7 @@ public class EventService {
     public EventDTO save(EventDTO eventDTO) {
         log.debug("Request to save Event : {}", eventDTO);
         Event event = eventMapper.toEntity(eventDTO);
+        event.setUser(userService.getUserCurrentUser());
         event = eventRepository.save(event);
         return eventMapper.toDto(event);
     }

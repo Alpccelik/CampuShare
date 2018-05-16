@@ -2,6 +2,7 @@ package com.campushare.security;
 
 import com.campushare.config.Constants;
 
+import com.campushare.domain.User;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
 
@@ -15,4 +16,5 @@ public class SpringSecurityAuditorAware implements AuditorAware<String> {
     public String getCurrentAuditor() {
         return SecurityUtils.getCurrentUserLogin().orElse(Constants.SYSTEM_ACCOUNT);
     }
+
 }

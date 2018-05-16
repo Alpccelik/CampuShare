@@ -21,7 +21,11 @@
             "startDate": "Start Date",
             "endDate": "End Date",
             "adress": "Adress",
-            "user": "User"
+            "category": "Category",
+            "user": "User",
+            "sport": "Sport",
+            "lesson": "lesson",
+            "social": "social"
         }
     }
 }

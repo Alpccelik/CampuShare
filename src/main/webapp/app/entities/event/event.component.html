@@ -12,7 +12,7 @@
     <div class="row">
     </div>
     <br/>
-    <div class="table-responsive" *ngIf="events">
+   <!-- <div class="table-responsive" *ngIf="events">
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
@@ -37,7 +37,7 @@
                 <td>{{event.endDate | date:'mediumDate'}}</td>
                 <td>{{event.adress}}</td>
                 <td>
-                    {{event.userLogin}}
+                    {{event.userLogin }}
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
@@ -76,5 +76,29 @@
         <div class="row justify-content-center">
             <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
+    </div>-->
+
+    <div class="card-columns"   >
+    <div class="card" style="width: 34rem;"  *ngFor="let event of events |orderBy :'id':true ;trackBy: trackId "  >
+        <div class="card-header" >
+            <h2></h2><span class="badge badge-pill badge-primary">{{event.category}} </span></h2>
+
+            {{event.startDate | date:'mediumDate'}} - {{event.endDate | date:'mediumDate'}}  </div>
+
+        <div class="card-body">
+            <h5 class="card-title"> {{event.maxPeople}} Kişi {{event.adress}}</h5>
+            <p class="card-text">{{event.description}} </p>
+            <p class="card-text">{{event.userId}} </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
     </div>
+</div>
+    <div *ngIf="events && events.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+</div>
 </div>
