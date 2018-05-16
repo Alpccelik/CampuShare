@@ -1,5 +1,8 @@
 build:
   languages:
     - java
+  config:
+    MAVEN_CUSTOM_GOALS: clean package
+    MAVEN_CUSTOM_OPTS: -Pprod -Dmaven.test.skip=true
 run:
   web: java -jar target/campu-share-0.0.1-SNAPSHOT.war
