@@ -19,13 +19,6 @@ logging:
         com.campushare: INFO
         io.github.jhipster: INFO
 
-eureka:
-    instance:
-        prefer-ip-address: true
-    client:
-        service-url:
-            defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
-
 spring:
     devtools:
         restart:
@@ -34,9 +27,7 @@ spring:
             enabled: false
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/CampuShare?useUnicode=true&characterEncoding=utf8&useSSL=false
-        username: root
-        password:
+        url: jdbc:mysql://root:root@localhost:3306/CampuShare?useUnicode=true&characterEncoding=utf8&useSSL=false
         hikari:
             data-source-properties:
                 cachePrepStmts: true

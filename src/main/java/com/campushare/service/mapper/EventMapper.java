@@ -1,10 +1,9 @@
 package com.campushare.service.mapper;
 
-import com.campushare.domain.*;
+import com.campushare.domain.Event;
 import com.campushare.service.dto.EventDTO;
-
-import org.mapstruct.*;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 /**
  * Mapper for the entity Event and its DTO EventDTO.
